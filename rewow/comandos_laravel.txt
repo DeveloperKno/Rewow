@@ -1,0 +1,10 @@
+LARAVEL
+
+ - php artisan serve => Arranca el servidor de laravel.
+ - php artisan make:migration create_categorias_table.php => Crear migracion de la base de datos.
+ - php artisan migrate => realiza las mmigraciones que no se han realizado.
+ - php artisan migrate:rollback => Devuelve las migraciones.
+ - php artisan make:model Models/Estado -m => Crea el modelo junto a su migración.
+ - php artisan make:controller Parametros/CategoriaController --resource => crea el controlador con las funciones completas
+
+
