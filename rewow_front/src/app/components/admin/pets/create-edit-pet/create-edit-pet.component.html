@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>{{ titleAccion }} Mascota</h1>
+<form [formGroup]="form" (ngSubmit)="savePet()">
+  <div mat-dialog-content>
+    <mat-grid-list cols="1" rowHeight="60px">
+      <mat-grid-tile>
+        <mat-form-field class="ancho">
+          <mat-label>Nombre Dueño</mat-label>
+          <input matInput autocomplete="off" formControlName="owner_name" />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="ancho">
+          <mat-label>Nombre</mat-label>
+          <input matInput autocomplete="off" formControlName="name" />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="ancho">
+          <mat-label>Tipo </mat-label>
+          <mat-select formControlName="type_id">
+            <mat-option *ngFor="let item of listTypes" [value]="item.id">{{
+              item.description
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-label>Tamaño</mat-label>
+        <mat-radio-group formControlName="size_id">
+          <mat-radio-button [value]="1" class="vertical-radio-group"
+            >Pequeño</mat-radio-button
+          >
+          <mat-radio-button [value]="2">Mediano</mat-radio-button>
+          <mat-radio-button [value]="3">Grande</mat-radio-button>
+        </mat-radio-group>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="ancho">
+          <mat-label>Descripción</mat-label>
+          <input matInput autocomplete="off" formControlName="description" />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div mat-dialog-actions class="divButtons">
+    <button mat-button mat-dialog-close class="secundary-button">
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      mat-button
+      class="primary-button"
+      [disabled]="form.invalid"
+    >
+      {{ buttonAccion }}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,64 @@
+[
+{
+    "label": "Inicio",
+    "redirect": "/admin",
+    "icon": "home"
+},
+{
+    "label": "Usuarios",
+    "redirect": "/admin",
+    "icon": "manage_accounts"
+},
+{
+    "label": "Clientes",
+    "redirect": "/admin/clientes",
+    "icon": "supervisor_account"
+},
+{
+    "label": "Categorias",
+    "redirect": "/admin/categorias",
+    "icon": "category"
+},
+{
+    "label": "Subcategorias",
+    "redirect": "/admin/subcategorias",
+    "icon": "library_add"
+},
+
+{
+    "label": "Productos",
+    "redirect": "/admin/productos",
+    "icon": "list",
+    "items": [
+        {
+            "label": "Productos",
+            "redirect": "/admin/productos"
+        },
+        {
+            "label": "Servicios",
+            "redirect": "/admin/servicios"
+        }
+    ]
+},
+{
+    "label": "Servicios",
+    "redirect": "/admin/servicios",
+    "icon": "cases"
+},
+{
+    "label": "Inventario",
+    "redirect": "/admin",
+    "icon": "inventory"
+},
+{
+    "label": "Ventas",
+    "redirect": "/admin",
+    "icon": "shopping_cart_checkout"
+},
+{
+    "label": "Reportes",
+    "redirect": "/admin",
+    "icon": "pie_chart_outlined"
+}
+]
+

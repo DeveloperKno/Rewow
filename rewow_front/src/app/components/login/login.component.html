@@ -1,0 +1,73 @@
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div
+      class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center"
+    >
+      <form (ngSubmit)="login()">
+        <main class="auth-page">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div
+                class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"
+              ></div>
+              <div
+                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet"
+              >
+                <div class="mdc-card">
+                  <mat-spinner
+                    diameter="50"
+                    *ngIf="loading"
+                    class="spinner"
+                  ></mat-spinner>
+
+                  <img
+                    src="../assets/images/logo.png"
+                    class="logo"
+                    alt="logo"
+                  />
+
+                  <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      placeholder="Ingrese Email"
+                      autocomplete="off"
+                      [(ngModel)]="email"
+                      name="email"
+                      required
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input
+                      type="password"
+                      matInput
+                      placeholder="Ingrese Contraseña"
+                      autocomplete="off"
+                      [(ngModel)]="password"
+                      name="password"
+                      required
+                    />
+                  </mat-form-field>
+                  <br />
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    class="ancho button"
+                  >
+                    Ingresar
+                  </button>
+                </div>
+              </div>
+              <div
+                class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"
+              ></div>
+            </div>
+          </div>
+        </main>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.ancho{
+    width: 100%;
+    font-size: 14px;
+}
+
+.divButtons{
+  display: flex;
+  justify-content: space-around;
+ 
+}
+
+
+.vertical-radio-group mat-radio-button {
+  display: block;
+  margin: 4px 0;
+}
+
+
+
+
+
+

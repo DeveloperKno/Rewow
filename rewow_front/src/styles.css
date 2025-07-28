@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.primary-button {
+  background-color: #7fcac3 !important;
+}
+
+.primary-button:before,
+.primary-button:after {
+  opacity: 0 !important;
+  background-color: transparent !important;
+}
+
+.secundary-button {
+  background-color: #b1b5b8 !important;
+  color: #666666;
+}
+
+.secundary-button:before,
+.secundary-button:after {
+  opacity: 0 !important;
+  background-color: transparent !important;
+}

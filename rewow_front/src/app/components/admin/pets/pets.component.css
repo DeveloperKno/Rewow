@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+  margin-top: 10px;
+  margin-right: 90px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th {
+  width: 20%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.containers {
+  margin: 20px;
+}
+
+mat-toolbar {
+  background-color: #536d79;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px 30px 0 0;
+}

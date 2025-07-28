@@ -1,0 +1,25 @@
+<!-- <div class="promo-banner">
+  <img src="assets/images/perrito-banner.png" alt="promo" />
+  <div class="promo-text">
+    <h2>PROMOCIÓN DE PELOS</h2>
+    <p>10% en Ropa para tu mascota</p>
+  </div>
+</div> -->
+
+<div class="product-grid">
+  <mat-card
+    *ngFor="let rown of listProduct"
+    class="product-card"
+    (click)="sellProduct(rown)"
+  >
+    <mat-card-header class="card-image">
+      <img [src]="rown.image" alt="{{ rown.description }}" />
+    </mat-card-header>
+
+    <mat-card-title>{{ rown.description }}</mat-card-title>
+
+    <mat-card-content> Precio: {{ rown.price }} </mat-card-content>
+
+    <mat-card-footer> Categoría: {{ rown.category }} </mat-card-footer>
+  </mat-card>
+</div>

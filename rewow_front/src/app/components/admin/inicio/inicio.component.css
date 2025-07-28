@@ -1,0 +1,45 @@
+.welcome-card {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px 20px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.welcome-card:hover {
+  transform: translateY(-5px);
+}
+
+.welcome-card h2 {
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.welcome-card p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.welcome-image {
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  background-color: #3f51b5;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-button:hover {
+  background-color: #303f9f;
+}

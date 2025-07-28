@@ -1,0 +1,64 @@
+.toolbar-card {
+  margin: 24px;
+  padding: 16px;
+}
+
+.content-card {
+  margin: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.tool-bar {
+  justify-content: center;
+  background-color: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.tool-bar form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.tool-bar mat-form-field {
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 70vh;
+}
+
+.left-column {
+  background-color: #4caf50;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: flex-start;
+  /* justify-items: center; */
+}
+
+.pet-details-grid {
+  font-size: medium;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding: 16px;
+  gap: 8px;
+}
+
+.full-width {
+  grid-column: span 3;
+  justify-self: center;
+}
+
+.right-column {
+  background-color: white;
+  overflow-y: auto;
+}
+
+.img {
+  width: 150px;
+}

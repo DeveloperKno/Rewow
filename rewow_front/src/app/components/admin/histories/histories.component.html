@@ -1,0 +1,76 @@
+<mat-card class="toolbar-card">
+  <mat-toolbar class="tool-bar">
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione Mascota</mat-label>
+        <mat-select formControlName="pet">
+          <mat-option *ngFor="let pet of listPet" [value]="pet">
+            {{ pet.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-toolbar>
+</mat-card>
+
+<mat-card class="toolbar-card">
+  <div class="grid-container">
+    <!-- Columna izquierda -->
+    <div class="left-column">
+      <div class="pet-details-grid">
+        <!-- Nombre -->
+        <div
+          class="full-width"
+          *ngIf="form.value.pet?.name"
+          style="font-weight: bold"
+        >
+          Nombre
+        </div>
+        <div class="full-width">
+          {{ form.value.pet?.name || "" }}
+        </div>
+        <div
+          class="full-width icon"
+          *ngIf="form.value.pet"
+          style="font-weight: bold"
+        >
+          <img src="../assets/camera.png" class="img" />
+        </div>
+
+        <div *ngIf="form.value.pet" style="font-weight: bold">Tipo</div>
+        <div *ngIf="form.value.pet" style="font-weight: bold">Tamaño</div>
+        <div *ngIf="form.value.pet" style="font-weight: bold">Dueño</div>
+
+        <div>{{ form.value.pet?.type || "" }}</div>
+        <div>{{ form.value.pet?.size || "" }}</div>
+        <div>{{ form.value.pet?.owner_name || "" }}</div>
+      </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="right-column">
+      <div style="display: flex; flex-direction: column">
+        <div
+          *ngFor="let rown of history"
+          style="border-bottom: 1px solid #e0e0e0; padding: 16px"
+        >
+          <mat-icon style="font-size: 32px; color: #4caf50; margin-bottom: 8px">
+            {{ rown.icon }}
+          </mat-icon>
+
+          <div style="font-weight: bold; margin-bottom: 4px">
+            {{ rown.subservice }}
+          </div>
+
+          <div style="color: #1e88e5; font-weight: bold; margin-bottom: 4px">
+            {{ rown.date }}
+          </div>
+
+          <div style="color: #1e88e5; font-weight: bold">
+            {{ rown.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

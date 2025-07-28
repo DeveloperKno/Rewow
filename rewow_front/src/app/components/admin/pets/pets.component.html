@@ -1,0 +1,150 @@
+<div class="containers">
+  <mat-toolbar class="mat-elevation-z20">
+    <span>Mascotas</span>
+    <button mat-raised-button class="primary-button" (click)="optionPet()">
+      Agregar
+    </button>
+  </mat-toolbar>
+  <div *ngIf="dataSource.data.length > 0">
+    <mat-form-field>
+      <mat-label>Buscar Mascota... </mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ej. dueño, nombre, tamaño..."
+        autocomplete="off"
+        #input
+      />
+    </mat-form-field>
+    <div class="mat-elevation-z20">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        aria-label="Lista de mascotas"
+      >
+        <ng-container matColumnDef="code">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 5%"
+          >
+            No.
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="owner">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 20%"
+          >
+            Nombre Dueño
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.owner_name }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 10%"
+          >
+            Nombre
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="type">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 10%"
+          >
+            Tipo
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.type }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="size">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 20%"
+          >
+            Tamaño
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.size }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="description">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 10%"
+          >
+            Descripción
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.description }}
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef style="width: 10%"></th>
+          <td
+            mat-cell
+            *matCellDef="let element; let i = index"
+            style="text-align: right"
+          >
+            <a
+              class="pointer"
+              style="color: #054b74"
+              matTooltip="Editar Mascota"
+              (click)="optionPet(element)"
+            >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <a
+              class="pointer"
+              style="color: #db1515"
+              matTooltip="Eliminar Mascota"
+              (click)="deletePet(element.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+  <mat-label *ngIf="dataSource.data.length == 0"
+    >No hay mascotas para mostrar.</mat-label
+  >
+</div>

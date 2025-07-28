@@ -1,0 +1,48 @@
+.body {
+  display: flex;
+  align-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.button {
+  height: 50px;
+  background-color: #536d79 !important;
+}
+
+.spinner {
+  margin: 0 auto;
+}
+
+.mdc-card {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  background: linear-gradient(-10deg, #ffffff 50%, #65ba69 50%);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-wrapper {
+  background: linear-gradient(-10deg, #f2f2f2 50%, #65ba69 50%) !important;
+}
+
+.logo {
+  width: 150px;
+  align-self: center;
+  padding: 80px 0px 100px 0px;
+}
+
+@media (max-width: 600px) {
+  .mdc-card {
+    padding: 30px 20px;
+  }
+
+  .logo {
+    width: 100px;
+  }
+}

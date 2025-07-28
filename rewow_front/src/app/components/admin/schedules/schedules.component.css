@@ -1,0 +1,13 @@
+.toolbar-card {
+  margin: 24px;
+  padding: 16px;
+  align-items: center;
+  width: 40%;
+}
+
+.content {
+  padding-top: 30px;
+  width: 50%;
+
+  align-items: center;
+}

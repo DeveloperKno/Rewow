@@ -1,0 +1,33 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" class="sidebar" opened>
+    <div class="header">
+      <img src="../assets/images/logo.png" alt="logo" width="50%" />
+    </div>
+
+    <div class="content">
+      <mat-nav-list>
+        <button
+          mat-button
+          *ngFor="let item of menu"
+          [routerLink]="item.link"
+          class="menu-a"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.name }}</span>
+        </button>
+      </mat-nav-list>
+    </div>
+
+    <div class="footer">
+      <mat-nav-list>
+        <button mat-button class="menu-a" (click)="logout()">
+          <mat-icon>toggle_on</mat-icon>
+          <span>Cerrar Sesión</span>
+        </button>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet> </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

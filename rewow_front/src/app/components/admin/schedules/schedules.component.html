@@ -1,0 +1,36 @@
+<mat-card class="toolbar-card">
+  <div>
+    <button mat-raised-button class="primary-button" (click)="newAppointment()">
+      Nueva Cita
+    </button>
+  </div>
+
+  <div class="content">
+    <mat-card style="padding: 16px; max-height: 200px; overflow-y: auto">
+      <div
+        *ngFor="let rown of listSchedule"
+        style="
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid #e0e0e0;
+          padding: 12px 0;
+        "
+      >
+        <mat-icon style="font-size: 28px; margin-right: 16px">
+          {{ rown.icon }}
+        </mat-icon>
+
+        <div style="flex: 1">
+          <div style="font-weight: bold">{{ rown.subservice }}</div>
+          <div style="color: #1e88e5; font-weight: bold; cursor: pointer">
+            {{ rown.date }}
+          </div>
+        </div>
+
+        <div style="color: #1e88e5; font-weight: bold; white-space: nowrap">
+          {{ rown.name }}
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</mat-card>

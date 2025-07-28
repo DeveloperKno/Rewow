@@ -1,0 +1,68 @@
+<mat-card>
+  <form [formGroup]="form" (ngSubmit)="saveAppointment()">
+    <mat-card-header>
+      <mat-label>Pedir Cita</mat-label>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione Mascota</mat-label>
+        <mat-select formControlName="pet_id">
+          <mat-option *ngFor="let pet of listPet" [value]="pet">
+            {{ pet.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngFor="let option of listSubservice">
+        <mat-radio-group formControlName="subservice_id">
+          <mat-radio-button [value]="option.id" class="vertical-radio-group">{{
+            option.description
+          }}</mat-radio-button>
+        </mat-radio-group>
+        <!-- <mat-checkbox
+          [checked]="selectedOption === option.id"
+          (change)="selectOnlyOne(option.id)"
+          formControlName="subservice_id"
+        >
+          {{ option.description }}
+        </mat-checkbox> -->
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de cita</mat-label>
+        <!-- <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" /> -->
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [min]="todayDate"
+          formControlName="date"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecciona una hora</mat-label>
+        <mat-select [(ngModel)]="selectedHour" formControlName="hour">
+          <mat-option *ngFor="let hour of hours" [value]="hour">
+            {{ hour }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer class="divButtons">
+      <button mat-button mat-dialog-close class="secundary-button">
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+        style="width: 25%"
+      >
+        Agendar
+      </button>
+    </mat-card-footer>
+  </form>
+</mat-card>
+
+<br />
