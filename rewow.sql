@@ -42,21 +42,18 @@ CREATE TABLE `failed_jobs` (
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Table structure for table `histories` */
+/*Table structure for table `links` */
 
-DROP TABLE IF EXISTS `histories`;
+DROP TABLE IF EXISTS `links`;
 
-CREATE TABLE `histories` (
+CREATE TABLE `links` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `pet_id` int DEFAULT NULL,
-  `subservice_id` int DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_histories_pets` (`pet_id`),
-  KEY `fk_histories_subservices` (`subservice_id`),
-  CONSTRAINT `fk_histories_pets` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`),
-  CONSTRAINT `fk_histories_subservices` FOREIGN KEY (`subservice_id`) REFERENCES `services` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(50) DEFAULT NULL,
+  `link` varchar(250) DEFAULT NULL,
+  `icon` varchar(50) DEFAULT NULL,
+  `order` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Table structure for table `migrations` */
 
@@ -98,7 +95,7 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Table structure for table `pets` */
 
@@ -109,12 +106,14 @@ CREATE TABLE `pets` (
   `owner_name` varchar(250) DEFAULT NULL,
   `name` varchar(250) DEFAULT NULL,
   `type_id` int DEFAULT NULL,
-  `size` varchar(20) DEFAULT NULL,
+  `size_id` int DEFAULT NULL,
   `description` text,
   PRIMARY KEY (`id`),
   KEY `fk_pets_types` (`type_id`),
+  KEY `fk_pets_sizes` (`size_id`),
+  CONSTRAINT `fk_pets_sizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`),
   CONSTRAINT `fk_pets_types` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Table structure for table `products` */
 
@@ -126,10 +125,11 @@ CREATE TABLE `products` (
   `amount` int DEFAULT NULL,
   `category_id` int DEFAULT NULL,
   `price` int DEFAULT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`id`),
   KEY `fk_products_categories` (`category_id`),
   CONSTRAINT `fk_products_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Table structure for table `sales` */
 
@@ -144,7 +144,7 @@ CREATE TABLE `sales` (
   PRIMARY KEY (`id`),
   KEY `fk_sales_products` (`product_id`),
   CONSTRAINT `fk_sales_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Table structure for table `schedules` */
 
@@ -153,14 +153,14 @@ DROP TABLE IF EXISTS `schedules`;
 CREATE TABLE `schedules` (
   `id` int NOT NULL AUTO_INCREMENT,
   `pet_id` int DEFAULT NULL,
-  `service_id` int DEFAULT NULL,
+  `subservice_id` int DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_schedules_pets` (`pet_id`),
-  KEY `fk_schedules_services` (`service_id`),
+  KEY `fk_schedules_services` (`subservice_id`),
   CONSTRAINT `fk_schedules_pets` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`),
-  CONSTRAINT `fk_schedules_services` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_schedules_subservices` FOREIGN KEY (`subservice_id`) REFERENCES `subservices` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Table structure for table `services` */
 
@@ -172,6 +172,16 @@ CREATE TABLE `services` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+/*Table structure for table `sizes` */
+
+DROP TABLE IF EXISTS `sizes`;
+
+CREATE TABLE `sizes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 /*Table structure for table `subservices` */
 
 DROP TABLE IF EXISTS `subservices`;
@@ -179,6 +189,7 @@ DROP TABLE IF EXISTS `subservices`;
 CREATE TABLE `subservices` (
   `id` int NOT NULL AUTO_INCREMENT,
   `description` varchar(250) DEFAULT NULL,
+  `icon` varchar(20) DEFAULT NULL,
   `service_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_subservices_services` (`service_id`),
